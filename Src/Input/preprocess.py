@@ -17,6 +17,7 @@ class Sample:
         self.skip = False
         self.start_tok_idx = -1
         self.end_tok_idx = -1
+        self.context_token_to_char = None
 
         self.inputs = {}
         self.targets = []
@@ -32,7 +33,7 @@ class Sample:
             answer = " ".join(str(self.answer_text).split())
             end_char_idx = self.start_char_idx + len(answer)
 
-            if end_char_idx > len(context):         
+            if end_char_idx > len(context):           # Might be >=
                 self.skip = True
                 return
 
@@ -68,4 +69,5 @@ class Sample:
         self.inputs["token_type_ids"] = token_type_ids
         self.inputs["attention_mask"] = attention_mask
 
-        self.targets = (self.start_tok_idx, self.end_tok_idx)              
+        self.targets = (self.start_tok_idx, self.end_tok_idx)  
+        self.context_token_to_char = tokenized_context.offsets                   

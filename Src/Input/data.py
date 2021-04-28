@@ -26,6 +26,31 @@ def create_squad_examples(raw_data):
     return generator
 
 
+def create_squad_inference(raw_data):
+    inputs=0
+           
+    for item in raw_data["data"]:
+        for para in item["paragraphs"]:
+            context = para["context"]
+            for qa in para["qas"]:
+                question = qa["question"]
+                if "answers" in qa:
+                    answer_text = qa["answers"][0]["text"]
+                    all_answers = [_["text"] for _ in qa["answers"]]
+                    start_char_idx = qa["answers"][0]["answer_start"]
+                    squad_eg = Sample(question, context, start_char_idx, answer_text, all_answers)
+                else:
+                    squad_eg = Sample(question, context)
+                squad_eg.preprocess()
+                if squad_eg.skip == False:
+                    inputs=squad_eg.inputs
+
+    inputs["input_ids"]=tf.expand_dims(inputs["input_ids"], axis=0)
+    inputs["attention_mask"] = tf.expand_dims(inputs["attention_mask"], axis=0)
+    inputs["token_type_ids"] = tf.expand_dims(inputs["token_type_ids"], axis=0)
+    return inputs, squad_eg.context_token_to_char, squad_eg.context, squad_eg.question
+
+
 class DataLoader:
     def __init__(self,data_path):
         with open(data_path, "r") as f:
