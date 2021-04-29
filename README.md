@@ -1,6 +1,6 @@
 # Fine Tuning Bert For Question Answering Using Tensorflow-2.x
 
-Tech Stacks Use:
+# Tech Stacks Used:
 
 ## 1. Tensorflow2.4
 ## 2. Tensorflow-Hub
@@ -33,6 +33,9 @@ I took the advantage of the built in Swagger UI in FastAPI.
 
 
 ![](https://github.com/Swapnadeep1998/Question_Answering_BERT/blob/main/Images_Screeshots/Screenshot%20from%202021-04-29%2018-02-04.png)
+
+
+ps : Had to stop the Azure VM to avoid costing
 
 
 
