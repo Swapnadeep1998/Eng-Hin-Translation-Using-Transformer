@@ -1,0 +1,17 @@
+name: bertQA
+channels:
+  - conda-forge
+  - defaults
+dependencies:  
+  - python=3.7.0
+  - pip
+  - scipy=1.6.2  
+  - tensorflow=2.0.0
+  - tensorflow-hub=0.12.0
+  - pip:    
+    - fastapi==0.63.0    
+    - tokenizers==0.10.2
+    - uvicorn==0.13.4
+    - numpy==1.18.0
+    
+

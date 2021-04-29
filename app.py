@@ -3,8 +3,8 @@ from pydantic import BaseModel
 import uvicorn
 from Inference.predictor import Predictor
 from Src import config
-import nest_asyncio
-from pyngrok import ngrok
+# import nest_asyncio
+# from pyngrok import ngrok
 
 class Input(BaseModel):
     context: str
@@ -40,7 +40,7 @@ async def predict_answer(inp:Input):
 
     
 if __name__=="__main__":    
-    ngrok_tunnel = ngrok.connect(8000)
-    print('Public URL:', ngrok_tunnel.public_url)
-    nest_asyncio.apply()
-    uvicorn.run(app, port=8000)
+    # ngrok_tunnel = ngrok.connect(8000)
+    # print('Public URL:', ngrok_tunnel.public_url)
+    # nest_asyncio.apply()
+    uvicorn.run("app:app", host='0.0.0.0', port=8000, reload=True)
