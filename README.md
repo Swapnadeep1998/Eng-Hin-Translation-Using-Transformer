@@ -2,12 +2,12 @@
 
 Tech Stacks Use:
 
-# 1. Tensorflow2.4
-# 2. Tensorflow-Hub
-# 3. Hugging Face Tokenizers
-# 4. Fast-Api
-# 5. Google Colab Pro (for training)
-# 6. Azure VMs (for deployment)
+## 1. Tensorflow2.4
+## 2. Tensorflow-Hub
+## 3. Hugging Face Tokenizers
+## 4. Fast-Api
+## 5. Google Colab Pro (for training)
+## 6. Azure VMs (for deployment)
 
 For fine tuning I've used Bert Model from Tensorflow Hub. For tokenization I've used BertWordPieceTokenizer from Tokenizers library in HuggingFace.
 Dataset Used: Squad-v1 dataset (Can be found in the ./Datasets folder)
